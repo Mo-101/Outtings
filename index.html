@@ -1,0 +1,214 @@
+<!DOCTYPE html><html>
+    <head>
+    <meta charset="utf-8">
+    <title>Logistic locations Dynamic Map</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js"></script>
+    <style>
+    body { margin: 0; padding: 0; }
+    #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+    </style>
+    <body>
+    <style>
+    .map-overlay-container {
+        position: absolute;
+        width: 15%;
+        top: 0;
+        left: 0;
+        padding: 10px;
+        z-index: 1;
+    }
+
+    .map-overlay {
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif,;
+        color: white;
+        background-color: #3b7bfa;
+        border-radius: 3px;
+        padding: 10px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .map-overlay h2,
+    .map-overlay p {
+        margin: 0 0 10px;
+    }
+    
+    h4{
+        margin: 5px 0;
+    }
+    h5{
+        margin: 5px 0;
+    }
+</style>
+
+
+<div id="map"></div>
+
+<div class="map-overlay-container">
+      <div class="map-overlay-inner">
+        <fieldset class="select-fieldset">
+          <label>Choose light preset</label>
+          <select id="lightPreset" name="lightPreset">
+            <!-- Each value matches a light preset -->
+            <option value="dawn">Dawn</option>
+            <option value="day" selected="">Day</option>
+            <option value="dusk">Dusk</option>
+            <option value="night">Night</option>
+          </select>
+
+    <div class="map-overlay">
+        <h2 id="location-title"></h2>
+        
+        <h4>Response Operations:</h4>
+        <p id="location-operations"></p>
+        <p id="location-description"></p>
+
+        <h4>Item value</h4>
+        <p id="itemvalue"></p>
+
+        <h5>Weight</h5>
+        <p id="weight"></p>
+    </div>
+</div>
+
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiYWthbmltbzEiLCJhIjoiY2w5ODU2cjR2MDR3dTNxcXRpdG5jb3Z6dyJ9.vi2wspa-B9a9gYYWMpEm0A';
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        center: [36.9875512, -1.2411039], // starting position [lng, lat]
+        zoom: 18, // starting zoom
+        pitch: 45, // starting pitch
+    });
+
+    const marker1 = new mapboxgl.Marker({ color: 'red'})
+    .setLngLat([36.9875512, -1.2411039])
+    .addTo(map);
+
+    const marker2 = new mapboxgl.Marker({ color: 'red'})
+    .setLngLat([31.08845563, -17.80261078])
+    .addTo(map);
+
+    const marker3 = new mapboxgl.Marker({ color: 'blue'})
+    .setLngLat([28.29911445, -15.41393435])
+    .addTo(map);
+
+    const marker4 = new mapboxgl.Marker({ color: 'green'})
+    .setLngLat([57.50418017, -20.16297451])
+    .addTo(map);
+
+    const title = document.getElementById('location-title');
+    const subTitle = document.getElementById('location-subTitle');
+    const description = document.getElementById('location-description');
+    const operations = document.getElementById('location-operations');
+    const itemvalue = document.getElementById('itemvalue');
+    const weight = document.getElementById('weight');
+
+    const locations = [
+        {
+            'id': '1',
+            'title': 'Zimbabwe',
+            'operations':['Cholera'],
+            'itemvalue': '$27,766.67',
+            'weight': '7,582.48 KG',
+            'camera': {
+                center: [31.08845563, -17.80261078],
+                zoom: 18,
+                pitch: 45
+            }
+        },
+        {
+            'id': '2',
+            'title': 'Zambia',
+            'operations':['Cholera'],
+            'itemvalue': '$104,028.16',
+            'weight': '14,397 KG',
+            'camera': {
+                center: [28.29911445, -15.41393435],
+                zoom: 18,
+                pitch: 45
+            }
+        },
+        {
+            'id': '3',
+            'title': 'Mauritius',
+            'operations':['Cyclone, Flooding & Landslide'], 
+            'itemvalue': '$133,808',
+            'weight': '56.9 Kg',
+            'camera': {
+                center: [57.50418017, -20.16297451],
+                zoom: 18,
+                pitch: 45
+            }
+        },
+    ]
+    function highlightBorough(code) {
+        // Only show the polygon feature that corresponds to `borocode` in the data.
+        map.setFilter('highlight', ['==', 'borocode', code]);
+    }
+
+    function playback(index) {
+        title.textContent = locations[index].title;
+        itemvalue.textContent = locations[index].itemvalue;
+        weight.textContent = locations[index].weight;
+        operations.innerHTML = '<li>' + locations[index].operations.join('</li><li>') + '</li>';
+        description.textContent = locations[index].description;
+
+
+
+
+        highlightBorough(locations[index].id ? locations[index].id : '');
+
+        // Animate the map position based on camera properties.
+        map.flyTo(locations[index].camera);
+
+        map.once('moveend', () => {
+            // Duration the slide is on screen after interaction.
+            window.setTimeout(() => {
+                // Increment index, looping back to the first after the last location.
+                index = (index + 1) % locations.length;
+                playback(index);
+            }, 5000); // After callback, show the location for 5 seconds.
+        });
+    }
+
+ 
+        document
+        .getElementById('lightPreset')
+        .addEventListener('change', function () {
+        map.setConfigProperty('basemap', 'lightPreset', this.value);
+    });
+
+        // Display the last title/description first.
+        title.textContent = locations[locations.length - 1].title;
+        description.textContent = locations[locations.length - 1].description;
+        operations.innerHTML = '<li>' + locations[locations.length - 1].operations.join('</li><li>') + '</li>';
+        itemvalue.textContent = locations[locations.length - 1].itemvalue
+
+        map.on('load', () => {
+            map.addSource('boroughs', {
+                'type': 'vector',
+                'url': 'mapbox://mapbox.8ibmsn6u'
+        });
+        map.addLayer(
+            {
+                'id': 'highlight',
+                'type': 'fill',
+                'source': 'boroughs',
+                'source-layer': 'original',
+                'paint': {
+                    'fill-color': '#fd6b50',
+                    'fill-opacity': 0.25
+                },
+                'filter': ['==', 'borocode', '']
+            },
+            'road-label' // Place polygon under labels.
+        );
+
+        // Start the playback animation for each borough.
+        playback(0);
+    });
+ </script>
+
+ </body>
+</html>
