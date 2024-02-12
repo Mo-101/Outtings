@@ -97,6 +97,10 @@
     .setLngLat([36.90934261, -1.31532219]) 
     .addTo(map);
 
+     const marker5 = new mapboxgl.Marker({ color: 'yellow'})
+    .setLngLat([47.50849285, -18.87925989]) 
+    .addTo(map);
+
     const title = document.getElementById('location-title');
     const subTitle = document.getElementById('location-subTitle');
     const description = document.getElementById('location-description');
@@ -137,6 +141,18 @@
             'weight': '4,691 Kg',
             'camera': {
                 center: [36.90934261, -1.31532219],
+                zoom: 17,
+                pitch: 45
+            }
+        },
+                {
+            'id': '4',
+            'title': 'Madagascar',
+            'operations':['Cholera'],
+            'itemvalue': '$15,444',
+            'weight': '179 Kg',
+            'camera': {
+                center: [47.50849285, -18.87925989],
                 zoom: 17,
                 pitch: 45
             }
