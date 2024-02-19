@@ -101,6 +101,10 @@
     .setLngLat([47.50849285, -18.87925989]) 
     .addTo(map);
 
+     const marker6 = new mapboxgl.Marker({ color: 'pink'})
+    .setLngLat([43.2413774, -11.7209701]) 
+    .addTo(map);
+
     const title = document.getElementById('location-title');
     const subTitle = document.getElementById('location-subTitle');
     const description = document.getElementById('location-description');
@@ -157,6 +161,19 @@
                 pitch: 45
             }
         },
+                {
+            'id': '5',
+            'title': 'Comoros',
+            'operations':['Cholera'],
+            'itemvalue': '$27,686',
+            'weight': '1,289 Kg',
+            'camera': {
+                center: [43.2413774, -11.7209701],
+                zoom: 17,
+                pitch: 45
+            }
+        },
+
     ]
     function highlightBorough(code) {
         // Only show the polygon feature that corresponds to `borocode` in the data.
