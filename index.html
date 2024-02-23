@@ -105,6 +105,10 @@
     .setLngLat([43.2413774, -11.7209701]) 
     .addTo(map);
 
+     const marker7 = new mapboxgl.Marker({ color: 'black'})
+    .setLngLat([31.5854808, 4.8520135])
+    .addTo(map);
+
     const title = document.getElementById('location-title');
     const subTitle = document.getElementById('location-subTitle');
     const description = document.getElementById('location-description');
@@ -180,7 +184,7 @@
             'itemvalue': '$8,928',
             'weight': '126 Kg',
             'camera': {
-                center: [43.2413774, -11.7209701],
+                center: [31.5854808, 4.8520135],
                 zoom: 17,
                 pitch: 45
             }
