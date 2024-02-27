@@ -109,6 +109,10 @@
     .setLngLat([31.5854808, 4.8520135])
     .addTo(map);
 
+     const marker8 = new mapboxgl.Marker({ color: 'grey'})
+    .setLngLat([45.2276102, -12.7790461])
+    .addTo(map);
+
     const title = document.getElementById('location-title');
     const subTitle = document.getElementById('location-subTitle');
     const description = document.getElementById('location-description');
@@ -185,6 +189,18 @@
             'weight': '126 Kg',
             'camera': {
                 center: [31.5854808, 4.8520135],
+                zoom: 17,
+                pitch: 45
+            }
+        },
+                {
+            'id': '7',
+            'title': 'Mayotte',
+            'operations':['Cholera'],
+            'itemvalue': '$2,241',
+            'weight': '17 Kg',
+            'camera': {
+                center: [45.2276102, -12.7790461],
                 zoom: 17,
                 pitch: 45
             }
