@@ -113,6 +113,14 @@
     .setLngLat([45.2276102, -12.7790461])
     .addTo(map);
 
+     const marker9 = new mapboxgl.Marker({ color: 'blue'})
+    .setLngLat([57.503289, -20.163283])
+    .addTo(map);
+
+     const marker10 = new mapboxgl.Marker({ color: 'orange'})
+    .setLngLat([38.76759962, 9.01461279])
+    .addTo(map);
+
     const title = document.getElementById('location-title');
     const subTitle = document.getElementById('location-subTitle');
     const description = document.getElementById('location-description');
@@ -200,7 +208,31 @@
             'itemvalue': '$2,241',
             'weight': '17 Kg',
             'camera': {
-                center: [45.2276102, -12.7790461],
+                center: [45.2276102, -12.7790461], 
+                zoom: 17,
+                pitch: 45
+            }
+        },
+                {
+            'id': '8',
+            'title': 'Mauritius',
+            'operations':['Dengue'],
+            'itemvalue': '$3,377',
+            'weight': '12.73 Kg',
+            'camera': {
+                center: [57.503289, -20.163283], 
+                zoom: 17,
+                pitch: 45
+            }
+        },
+                {
+            'id': '9',
+            'title': 'Ethiopia',
+            'operations':['Malaria'],
+            'itemvalue': '$59,044',
+            'weight': '17.35 Kg',
+            'camera': {
+                center: [38.76759962, 9.01461279],
                 zoom: 17,
                 pitch: 45
             }
