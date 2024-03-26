@@ -121,6 +121,18 @@
     .setLngLat([38.76759962, 9.01461279])
     .addTo(map);
 
+     const marker11 = new mapboxgl.Marker({ color: 'green'})
+    .setLngLat([15.2669208, -4.26228349])
+    .addTo(map);
+
+     const marker12 = new mapboxgl.Marker({ color: 'indigo'})
+    .setLngLat([29.3700861, -3.38178999])
+    .addTo(map);
+
+    const marker13 = new mapboxgl.Marker({ color: 'red'})
+    .setLngLat([-17.5135558, 14.7426238])
+    .addTo(map);
+
     const title = document.getElementById('location-title');
     const subTitle = document.getElementById('location-subTitle');
     const description = document.getElementById('location-description');
@@ -145,7 +157,7 @@
             'id': '2',
             'title': 'Zambia',
             'operations':['Cholera'],
-            'itemvalue': '$204,506',
+            'itemvalue': '$204,507',
             'weight': '22,923 Kg',
             'camera': {
                 center: [28.29911445, -15.41393435],
@@ -157,7 +169,7 @@
             'id': '3',
             'title': 'Kenya',
             'operations':['Accident & Trauma','WHO Regular Support To Member States'],
-            'itemvalue': '$241,369',
+            'itemvalue': '$299,741',
             'weight': '9,004 Kg',
             'camera': {
                 center: [36.90934261, -1.31532219],
@@ -217,7 +229,7 @@
             'id': '8',
             'title': 'Mauritius',
             'operations':['Dengue'],
-            'itemvalue': '$3,377',
+            'itemvalue': '$134,145',
             'weight': '12.73 Kg',
             'camera': {
                 center: [57.503289, -20.163283], 
@@ -233,6 +245,42 @@
             'weight': '17.35 Kg',
             'camera': {
                 center: [38.76759962, 9.01461279],
+                zoom: 17,
+                pitch: 45
+            }
+        },
+                {
+            'id': '10',
+            'title': 'Congo Brazzaville',
+            'operations':['COVID-19'],
+            'itemvalue': '$3,105',
+            'weight': '18 Kg',
+            'camera': {
+                center: [15.2669208, -4.26228349],
+                zoom: 17,
+                pitch: 45
+            }
+        },
+                {
+            'id': '11',
+            'title': 'Burundi',
+            'operations':['WHO Regular Support To Member States'],
+            'itemvalue': '$12,181',
+            'weight': '1,562 Kg',
+            'camera': {
+                center: [29.3700861, -3.38178999],
+                zoom: 17,
+                pitch: 45
+            }
+        },
+               {
+            'id': '12',
+            'title': 'Senegal',
+            'operations':['Hub Operations & Capacity Building'],
+            'itemvalue': '$11,526',
+            'weight': '18 Kg',
+            'camera': {
+                center: [-17.5135558, 14.7426238],
                 zoom: 17,
                 pitch: 45
             }
