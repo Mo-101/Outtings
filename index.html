@@ -51,8 +51,8 @@
           <label>Choose light preset</label>
           <select id="lightPreset" name="lightPreset">
             <!-- Each value matches a light preset -->
-            <option value="dawn">Dawn</option>
-            <option value="day" selected="">Day</option>
+            <option value="day">Day</option>
+            <option value="dawn" selected="">Dawn</option>
             <option value="dusk">Dusk</option>
             <option value="night">Night</option>
           </select>
@@ -157,7 +157,7 @@
             'id': '2',
             'title': 'Zambia',
             'operations':['Cholera'],
-            'itemvalue': '$204,507',
+            'itemvalue': '$271,067.76',
             'weight': '22,923 Kg',
             'camera': {
                 center: [28.29911445, -15.41393435],
@@ -168,9 +168,9 @@
         {
             'id': '3',
             'title': 'Kenya',
-            'operations':['Accident & Trauma','WHO Regular Support To Member States'],
-            'itemvalue': '$715,379',
-            'weight': '12,346 Kg',
+            'operations':['Accident & Trauma','WHO Regular Support To Member States','Cyclone/Flooding & Landslide','Hub Operations & Capacity Building'],
+            'itemvalue': '$847,691.21',
+            'weight': '39,901.08 Kg',
             'camera': {
                 center: [36.90934261, -1.31532219],
                 zoom: 17,
@@ -180,9 +180,9 @@
                 {
             'id': '4',
             'title': 'Madagascar',
-            'operations':['Cholera'],
-            'itemvalue': '$15,444',
-            'weight': '179 Kg',
+            'operations':['Cholera','Cyclone/Flooding & Landslide'],
+            'itemvalue': '$190,839.80',
+            'weight': '13,832 Kg',
             'camera': {
                 center: [47.50849285, -18.87925989],
                 zoom: 17,
@@ -192,9 +192,9 @@
                 {
             'id': '5',
             'title': 'Comoros',
-            'operations':['Cholera'],
-            'itemvalue': '$27,686',
-            'weight': '1,289 Kg',
+            'operations':['Cholera','Cyclone/Flooding & Landslide'],
+            'itemvalue': '$114,073.80',
+            'weight': '10,907.06 Kg',
             'camera': {
                 center: [43.2413774, -11.7209701],
                 zoom: 17,
@@ -206,7 +206,7 @@
             'title': 'South Sudan',
             'operations':['WHO Support to member states'],
             'itemvalue': '$8,928',
-            'weight': '126 Kg',
+            'weight': '126.2 Kg',
             'camera': {
                 center: [31.5854808, 4.8520135],
                 zoom: 17,
@@ -280,12 +280,35 @@
             'itemvalue': '$11,526',
             'weight': '18 Kg',
             'camera': {
-                center: [-17.5135558, 14.7426238],
+                center: [14.74252179,-17.51344803],
                 zoom: 17,
                 pitch: 45
             }
         },
-
+             {
+            'id': '13',
+            'title': 'Congo Kinshasa',
+            'operations':['WHO Regular Support To Member States'],
+            'itemvalue': '$62,526.87',
+            'weight': '388.4 Kg',
+            'camera': {
+                center: [-4.3161726, 15.2726097],
+                zoom: 17,
+                pitch: 45
+            }
+        },
+              {
+            'id': '14',
+            'title': 'Malawi',
+            'operations':['WHO Regular Support To Member States'],
+            'itemvalue': '$86.00',
+            'weight': '0.04 Kg',
+            'camera': {
+                center: [-13.962212, 33.7929764],
+                zoom: 17,
+                pitch: 45
+            }
+        },
     ]
     function highlightBorough(code) {
         // Only show the polygon feature that corresponds to `borocode` in the data.
